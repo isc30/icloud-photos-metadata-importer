@@ -6,8 +6,8 @@ param (
 
 Get-ChildItem $PhotosPath | Foreach-Object {
     $_.CreationTime = $_.LastWriteTime
-    
-    if ($_.BaseName -match "IMG-(\d\d\d\d)(\d\d)(\d\d)-.*") {
+
+    if ($_.BaseName -match ".*-(\d\d\d\d)(\d\d)(\d\d)-.*") {
         $date = [DateTime]"$($matches[1])-$($matches[2])-$($matches[3])"
         $_.CreationTime = $date
     }
